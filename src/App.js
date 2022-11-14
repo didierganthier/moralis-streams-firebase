@@ -49,29 +49,48 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>🔥 Firebase Moralis Streams Extension 🔥</p>
-            <table className="table">
+        <p className="mb-10">🔥 Firebase Moralis Streams Extension 🔥</p>
+        <div class="overflow-x-auto relative">
+          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th>From</th>
-                <th>To</th>
-                <th>Amount</th>
-                <th>Block</th>
-                <th>Hash</th>
-                <th>Time</th>
+                <th scope="col" class="py-3 px-6">
+                  From
+                </th>
+                <th scope="col" class="py-3 px-6">
+                  To
+                </th>
+                <th scope="col" class="py-3 px-6">
+                  Amount
+                </th>
+                <th scope="col" class="py-3 px-6">
+                  Block
+                </th>
               </tr>
-              {txs?.map((e,i)=>{
-                return(
-                  <tr key={i}>
-                    <td>{e.fromAddress}</td>
-                    <td>{e.toAddress}</td>
-                    <td>{e.value / 1E18} Matic</td>
-                    <td>{e.blockNumber}</td>
-                    <td>{e.hash}</td>
-                    <td>{e.timestamp}</td>
-                  </tr>
+            </thead>
+            <tbody>
+              {txs?.map((e, i) => {
+                return (
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {e.fromAddress}
+                  </th>
+                  <td class="py-4 px-6">
+                    {e.toAddress}
+                  </td>
+                  <td class="py-4 px-6">
+                    {e.value / 1E18} Matic
+                  </td>
+                  <td class="py-4 px-6">
+                    {e.blockNumber}
+                  </td>
+                </tr>
                 )
               })}
-            </table>
+            </tbody>
+          </table>
+        </div>
+
       </header>
     </div>
   );
